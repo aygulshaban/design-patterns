@@ -13,6 +13,20 @@ private Set<Bot> bots;
 		this.users = new ArrayList<>();
 	}
 
+
+	private Bot checkMessage(String message) {
+		if (message.contains("addBot")) {
+			return BotForCat.getInstance();
+		}
+		return null;
+	}
+	
+
+	@Override
+	public void addUser(User user) {
+		this.users.add(user);
+	}
+	
 	@Override
 	public void sendMessage(String message, User user) {
 		Bot bot = checkMessage(message);
@@ -20,9 +34,9 @@ private Set<Bot> bots;
 		if (bot != null) {
 			addBot(bot);
 		}
-		if (!bots.isEmpty()) {
+		 //if (!bots.isEmpty()) {
 			checkBots = true;
-		}
+		//}
 		for (User u : this.users) {
 			if (u != user) {
 				u.receive(message);
@@ -36,23 +50,11 @@ private Set<Bot> bots;
 		}
 
 	}
-
-
-	@Override
-	public void addUser(User user) {
-		this.users.add(user);
-	}
-
+	
 	@Override
 	public void addBot(Bot bot) {
 		this.bots.add(bot);
 		System.out.println("Bot is added successfully!");
 	}
 
-	private Bot checkMessage(String message) {
-		if (message.contains("addBot")) {
-			return BotForCat.getInstance();
-		}
-		return null;
-	}
 }

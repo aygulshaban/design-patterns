@@ -11,7 +11,7 @@ public class ChatUser extends User{
 		@Override
 		public void send(String message) {
 			System.out.println("-" + this.name + " sends: " + message);
-			this.message.sendMessage(message, this);
+			//this.message.sendMessage(message, this);
 		}
 
 		@Override
