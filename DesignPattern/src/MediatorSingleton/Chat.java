@@ -34,9 +34,9 @@ private Set<Bot> bots;
 		if (bot != null) {
 			addBot(bot);
 		}
-		 //if (!bots.isEmpty()) {
+		 
 			checkBots = true;
-		//}
+	
 		for (User u : this.users) {
 			if (u != user) {
 				u.receive(message);
